@@ -6,6 +6,7 @@ import 'package:karirku/screens/routes/SecondScreen/second_screen.dart';
 
 class JobList extends StatelessWidget {
   const JobList({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
