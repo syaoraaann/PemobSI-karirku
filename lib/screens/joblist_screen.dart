@@ -5,7 +5,7 @@ import 'package:karirku/screens/routes/SecondScreen/apply_screen.dart';
 import 'package:karirku/screens/routes/SecondScreen/second_screen.dart';
 
 class JobList extends StatelessWidget {
-    const JobList({Key? key}) : super(key: key);
+  const JobList({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,7 +26,7 @@ class JobBox extends StatelessWidget {
     return Container(
       margin: EdgeInsets.only(bottom: 16.0),
       decoration: BoxDecoration(
-        color: Colors.grey[200], 
+        color: Colors.grey[200],
         borderRadius: BorderRadius.circular(10.0), // Rounded corners
       ),
       child: Padding(
@@ -38,33 +38,37 @@ class JobBox extends StatelessWidget {
               'Job Title - Company Name', // Replace with job details
               style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8.0), // Add some space between title and description
+            SizedBox(
+                height: 8.0), // Add some space between title and description
             Text(
               'Job description goes here. Briefly describe the main responsibilities and requirements of the job.',
               maxLines: 3, // Limit description lines (optional)
-              overflow: TextOverflow.ellipsis, // Add ellipsis (...) if text overflows
+              overflow:
+                  TextOverflow.ellipsis, // Add ellipsis (...) if text overflows
             ),
             SizedBox(height: 8.0),
-            Row( // Row for buttons (optional)
-              mainAxisAlignment: MainAxisAlignment.spaceBetween, // Align buttons
+            Row(
+              // Row for buttons (optional)
+              mainAxisAlignment:
+                  MainAxisAlignment.spaceBetween, // Align buttons
               children: [
-              ElevatedButton(
-              onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => ApplyScreen()),
-                ) ;
-                },
-                  child: Text('Apply'),
-              ),
-              TextButton(
-              onPressed: () {
-              Navigator.push(
-                context,
-                       MaterialPageRoute(builder: (context) => SecondScreen()),
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => ApplyScreen()),
                     );
                   },
-                child: Text('More Details'),
+                  child: Text('Apply'),
+                ),
+                TextButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => SecondScreen()),
+                    );
+                  },
+                  child: Text('More Details'),
                 ),
               ],
             ),

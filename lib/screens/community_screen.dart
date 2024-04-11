@@ -5,7 +5,7 @@ import 'package:karirku/screens/news_screen.dart';
 // import 'package:my_app/screens/routes/SecondScreen/second_screen.dart';
 
 class CommunityPage extends StatelessWidget {
-    const CommunityPage({Key? key}) : super(key: key);
+  const CommunityPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,25 +38,29 @@ class JobBox extends StatelessWidget {
               'Community Name', // Replace with job details
               style: TextStyle(fontSize: 16.0, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8.0), // Add some space between title and description
+            SizedBox(
+                height: 8.0), // Add some space between title and description
             Text(
               'Community Description',
               maxLines: 3, // Limit description lines (optional)
-              overflow: TextOverflow.ellipsis, // Add ellipsis (...) if text overflows
+              overflow:
+                  TextOverflow.ellipsis, // Add ellipsis (...) if text overflows
             ),
             SizedBox(height: 8.0),
-            Row( // Row for buttons (optional)
-              mainAxisAlignment: MainAxisAlignment.spaceBetween, // Align buttons
+            Row(
+              // Row for buttons (optional)
+              mainAxisAlignment:
+                  MainAxisAlignment.spaceBetween, // Align buttons
               children: [
-              ElevatedButton(
-              onPressed: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => NewsScreen()),
-                  ) ;
-                },
+                ElevatedButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => NewsScreen()),
+                    );
+                  },
                   child: Text('Join'),
-              ),
+                ),
               ],
             ),
           ],

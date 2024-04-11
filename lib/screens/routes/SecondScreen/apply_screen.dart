@@ -1,4 +1,4 @@
-// ignore_for_file: avoid_print, prefer_const_literals_to_create_immutables, prefer_const_constructors
+// ignore_for_file: avoid_print, prefer_const_literals_to_create_immutables, prefer_const_constructors, use_super_parameters
 
 import 'package:flutter/material.dart';
 
@@ -68,7 +68,8 @@ class ApplyScreen extends StatelessWidget {
             const SizedBox(height: 5),
             Text(
               'A brief description of the company, its mission, and values. Highlight what makes the company a great place to work.',
-              style: const TextStyle(fontSize: 14.0), // Adjust font size as needed
+              style:
+                  const TextStyle(fontSize: 14.0), // Adjust font size as needed
             ),
             const SizedBox(height: 10),
             GestureDetector(
@@ -80,11 +81,11 @@ class ApplyScreen extends StatelessWidget {
                   borderRadius: BorderRadius.circular(10.0),
                 ),
                 child: Text(
-                '* Bachelor\'s degree in a relevant field (e.g., Computer Science, Engineering)\n'
-                '* Minimum 2 years of experience in a similar role\n'
-                '* Strong analytical and problem-solving skills\n'
-                '* Excellent communication and collaboration skills\n'
-                '* Good Looking...',
+                  '* Bachelor\'s degree in a relevant field (e.g., Computer Science, Engineering)\n'
+                  '* Minimum 2 years of experience in a similar role\n'
+                  '* Strong analytical and problem-solving skills\n'
+                  '* Excellent communication and collaboration skills\n'
+                  '* Good Looking...',
                   style: const TextStyle(fontSize: 16.0),
                 ),
               ),
@@ -92,7 +93,21 @@ class ApplyScreen extends StatelessWidget {
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
-                print('Apply button pressed!');
+                // Display the success popup
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: const Text('Application Submitted'),
+                    content: const Text(
+                        'Your application has been submitted successfully!'),
+                    actions: [
+                      TextButton(
+                        onPressed: () => Navigator.pop(context),
+                        child: const Text('OK'),
+                      ),
+                    ],
+                  ),
+                );
               },
               child: const Text('Apply Now'),
             ),
