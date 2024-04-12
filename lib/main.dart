@@ -261,30 +261,36 @@ class _MyHomePageState extends State<MyHomePage> {
               title: const Text('Home'),
               selected: _selectedIndex == 0,
               onTap: () {
-                // Update the state of the app
-                _onItemTapped(0);
-                // Then close the drawer
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NewsScreen(),
+                  ),
+                );
               },
             ),
             ListTile(
               title: const Text('Settings'),
               selected: _selectedIndex == 1,
               onTap: () {
-                // Update the state of the app
-                _onItemTapped(1);
-                // Then close the drawer
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NewsScreen(),
+                  ),
+                );
               },
             ),
             ListTile(
               title: const Text('Profile'),
               selected: _selectedIndex == 2,
               onTap: () {
-                // Update the state of the app
-                _onItemTapped(2);
-                // Then close the drawer
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => NewsScreen(),
+                  ),
+                );
               },
             ),
             ListTile(
