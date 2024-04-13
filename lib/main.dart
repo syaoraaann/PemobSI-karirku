@@ -1,6 +1,7 @@
 // ignore_for_file: use_super_parameters, use_key_in_widget_constructors, library_private_types_in_public_api, prefer_const_constructors, sized_box_for_whitespace, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/material.dart';
+import 'package:karirku/screens/crud.dart';
 import 'package:karirku/screens/joblist_screen.dart';
 import 'package:karirku/screens/news_screen.dart';
 import 'package:karirku/screens/routes/SecondScreen/second_screen.dart';
@@ -258,7 +259,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             const SizedBox(height: 70.0),
             ListTile(
-              title: const Text('Home'),
+              title: const Text('API Screen'),
               selected: _selectedIndex == 0,
               onTap: () {
                 Navigator.push(
@@ -270,37 +271,15 @@ class _MyHomePageState extends State<MyHomePage> {
               },
             ),
             ListTile(
-              title: const Text('Settings'),
-              selected: _selectedIndex == 1,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => NewsScreen(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Profile'),
-              selected: _selectedIndex == 2,
-              onTap: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => NewsScreen(),
-                  ),
-                );
-              },
-            ),
-            ListTile(
-              title: const Text('Books Screen'),
+              title: const Text('Notes'),
               selected: _selectedIndex == 3,
               onTap: () {
-                // Update the state of the app
-                _onItemTapped(3);
-                // // Then close the drawer
-                Navigator.pop(context);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => BooksScreen(),
+                  ),
+                );
               },
             ),
           ],
