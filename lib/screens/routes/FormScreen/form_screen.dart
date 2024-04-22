@@ -1,4 +1,4 @@
-// ignore_for_file: library_private_types_in_public_api, use_super_parameters
+// ignore_for_file: library_private_types_in_public_api, use_super_parameters, use_build_context_synchronously
 
 import 'dart:io';
 
@@ -16,6 +16,7 @@ class FormScreen extends StatefulWidget {
 }
 
 class _FormScreenState extends State<FormScreen> {
+  bool _isLoading = false;
   final _titleController = TextEditingController();
   String _title = "";
 
@@ -82,6 +83,9 @@ class _FormScreenState extends State<FormScreen> {
   }
 
   Future<void> _postDataWithImage(BuildContext context) async {
+    setState(() {
+      _isLoading = true;
+    });
     if (galleryFile == null) {
       return; // Handle case where no image is selected
     }
@@ -98,11 +102,20 @@ class _FormScreenState extends State<FormScreen> {
     request.send().then((response) {
       // Handle response (success or error)
       if (response.statusCode == 201) {
+        setState(() {
+          _isLoading = false;
+        });
         debugPrint('Data and image posted successfully!');
         Navigator.pushReplacementNamed(context, '/datas-screen');
       } else {
+        setState(() {
+          _isLoading = false;
+        });
         debugPrint('Error posting data: ${response.statusCode}');
       }
+    });
+    setState(() {
+      _isLoading = false;
     });
   }
 
@@ -139,7 +152,7 @@ class _FormScreenState extends State<FormScreen> {
                     height: 2,
                   ),
                   Text(
-                    "Fill the datas below, make sure you add titles and upload the images",
+                    "Fill the datas below, make sure you add titles and upload the images test",
                     style: GoogleFonts.poppins(
                       fontSize: 12,
                       color: Colors.white,
@@ -241,7 +254,9 @@ class _FormScreenState extends State<FormScreen> {
         onPressed: () {
           _postDataWithImage(context);
         },
-        child: const Icon(Icons.save, color: Colors.white, size: 28),
+        child: _isLoading
+            ? const CircularProgressIndicator(color: Colors.white)
+            : const Icon(Icons.save, color: Colors.white, size: 28),
       ),
     );
   }

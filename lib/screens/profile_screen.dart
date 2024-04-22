@@ -24,6 +24,8 @@ class ProfilePage extends StatelessWidget {
                         radius: 100.0,
                         backgroundColor:
                             const Color.fromARGB(255, 129, 125, 125),
+                        foregroundImage:
+                            AssetImage('assets/images/avatar-hd.png'),
                         child: CircleAvatar(
                           radius: 90.0,
                           foregroundColor: Colors.black,

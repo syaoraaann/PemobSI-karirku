@@ -12,9 +12,14 @@ class CommunityPage extends StatelessWidget {
       body: Padding(
         padding: EdgeInsets.all(16.0),
         child: ListView.builder(
-          itemCount: 6,
+          itemCount: 6, // Adjust as needed
           itemBuilder: (context, index) => JobBox(), // Build each box
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        backgroundColor: Colors.blue,
+        child: const Icon(Icons.add), // Use theme color
       ),
     );
   }
