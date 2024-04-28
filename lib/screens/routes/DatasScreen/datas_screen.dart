@@ -35,7 +35,7 @@ class _DatasScreenState extends State<DatasScreen> {
           onPressed: () {
             // Your custom back button functionality here
             Navigator.pushReplacementNamed(
-                context, '/'); // Default back button behavior
+                context, '/dashboard'); // Default back button behavior
             // You can add additional actions here (e.g., show confirmation dialog)
           },
         ),
