@@ -1,10 +1,11 @@
-// ignore_for_file: library_private_types_in_public_api, use_super_parameters
+// ignore_for_file: prefer_const_constructors, use_super_parameters, library_private_types_in_public_api, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:karirku/components/bottom_up_transition.dart';
 import 'package:karirku/dto/datas.dart';
 import 'package:karirku/endpoints/endpoints.dart';
+import 'package:karirku/screens/routes/FormScreen/editscreen.dart';
 import 'package:karirku/screens/routes/FormScreen/form_screen.dart';
 import 'package:karirku/services/data_service.dart';
 
@@ -73,7 +74,27 @@ class _DatasScreenState extends State<DatasScreen> {
                           color: const Color.fromARGB(255, 36, 31, 31),
                           fontWeight: FontWeight.normal,
                         )),
-                    const Divider()
+                    const Divider(),
+                    Row(
+                      children: [
+                        IconButton(
+                          onPressed: () {
+                            _showDeleteConfirmationDialog(context, item);
+                          },
+                          icon: Icon(Icons.delete),
+                        ),
+                        IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        EditScreen(object: item)));
+                          },
+                          icon: Icon(Icons.edit),
+                        ),
+                      ],
+                    )
                   ]),
                 );
               },
@@ -95,5 +116,57 @@ class _DatasScreenState extends State<DatasScreen> {
         child: const Icon(Icons.add, color: Colors.white, size: 28),
       ),
     );
+  }
+
+  Future<void> _showDeleteConfirmationDialog(
+      BuildContext context, Datas datas) async {
+    final bool confirmed = await showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text('Delete Data'),
+        content: Text('Are you sure you want to delete this ${datas.name}?'),
+        actions: [
+          TextButton(
+            onPressed: () {
+              // Tidak jadi menghapus, kembali dengan nilai false
+              Navigator.of(context).pop(false);
+            },
+            child: Text('Cancel'),
+          ),
+          TextButton(
+            onPressed: () {
+              // Konfirmasi untuk menghapus, kembali dengan nilai true
+              Navigator.of(context).pop(true);
+            },
+            child: Text('Delete'),
+          ),
+        ],
+      ),
+    );
+
+    // Jika pengguna mengonfirmasi penghapusan, lanjutkan penghapusan
+    if (confirmed) {
+      try {
+        // Memanggil metode deleteDatas untuk menghapus data dengan ID tertentu
+        await DataService.deleteDatas(datas.idDatas);
+        // Refresh data setelah berhasil menghapus
+        setState(() {
+          _datas = DataService.fetchDatas();
+        });
+        // Tampilkan snackbar atau pesan berhasil dihapus
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Data deleted successfully'),
+          ),
+        );
+      } catch (e) {
+        // Tangani kesalahan jika gagal menghapus data
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text('Failed to delete data: $e'),
+          ),
+        );
+      }
+    }
   }
 }

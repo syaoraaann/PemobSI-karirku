@@ -10,12 +10,44 @@ class JobList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: EdgeInsets.all(16.0),
-        child: ListView.builder(
-          itemCount: 6,
-          itemBuilder: (context, index) => JobBox(), // Build each box
-        ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    // Handle "My Jobs" button click
+                  },
+                  child: Text('My Jobs'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    // Handle "Preferences" button click
+                  },
+                  child: Text('Preferences'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    // Handle "Post a Free Job" button click (consider navigation)
+                  },
+                  child: Text('Post a Free Job'),
+                ),
+              ],
+            ),
+          ),
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.all(14.0), // Adjust padding as needed
+              child: ListView.builder(
+                itemCount: 10, // Replace with actual data length
+                itemBuilder: (context, index) => JobBox(), // Build each box
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

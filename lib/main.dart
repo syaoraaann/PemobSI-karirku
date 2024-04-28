@@ -139,6 +139,18 @@ class _MyHomePageState extends State<MyHomePage> {
                 );
               },
             ),
+            ListTile(
+              title: const Text('Customer Support'),
+              selected: _selectedIndex == 2,
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => DatasScreen(),
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),
