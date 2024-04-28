@@ -10,7 +10,6 @@ import 'package:http/http.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:karirku/dto/datas.dart';
 import 'package:karirku/endpoints/endpoints.dart';
-import 'package:karirku/screens/routes/DatasScreen/datas_screen.dart';
 
 class EditScreen extends StatefulWidget {
   const EditScreen({Key? key, required this.object}) : super(key: key);
