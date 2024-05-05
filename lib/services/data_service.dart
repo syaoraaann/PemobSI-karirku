@@ -1,4 +1,5 @@
 import 'package:http/http.dart' as http;
+import 'package:karirku/dto/datascustomer.dart';
 import 'package:karirku/dto/datas.dart';
 import 'dart:convert';
 
@@ -40,8 +41,26 @@ class DataService {
     }
   }
 
+  static Future<List<CustomerService>> fetchCustomerService() async {
+    final response = await http.get(Uri.parse(Endpoints.customerService));
+    if (response.statusCode == 200) {
+      final data = jsonDecode(response.body) as Map<String, dynamic>;
+      return (data['datas'] as List<dynamic>)
+          .map((item) => CustomerService.fromJson(item as Map<String, dynamic>))
+          .toList();
+    } else {
+      // Handle error
+      throw Exception('Failed to load data');
+    }
+  }
+
   static Future<void> deleteDatas(int id) async {
     await http.delete(Uri.parse('${Endpoints.datas}/$id'),
+        headers: {'Content-type': 'aplication/json'});
+  }
+
+  static Future<void> deleteDatasCustomer(int id) async {
+    await http.delete(Uri.parse('${Endpoints.customerService}/$id'),
         headers: {'Content-type': 'aplication/json'});
   }
 
@@ -72,6 +91,34 @@ class DataService {
     } else {
       // Handle error
       throw Exception('Failed to create post: ${response.statusCode}');
+    }
+  }
+
+  static Future<CustomerService> updateCustomer(
+      int idCustomerService,
+      String titleIssues,
+      String desciptionIssues,
+      int rating,
+      String? imageUrl) async {
+    final url = Uri.parse('${Endpoints.customerService}/$idCustomerService');
+    final request = http.MultipartRequest('POST', url);
+
+    request.fields['title_issues'] = titleIssues;
+    request.fields['description_issues'] = desciptionIssues;
+    request.fields['rating'] = rating.toString();
+
+    if (imageUrl != null) {
+      request.files.add(await http.MultipartFile.fromPath('image', imageUrl));
+    }
+
+    final response = await request.send();
+    final responseBody = await response.stream.bytesToString();
+
+    if (response.statusCode == 200) {
+      final jsonResponse = jsonDecode(responseBody);
+      return CustomerService.fromJson(jsonResponse);
+    } else {
+      throw Exception('Failed to update data: ${response.statusCode}');
     }
   }
 }

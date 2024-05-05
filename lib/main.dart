@@ -5,6 +5,7 @@ import 'package:karirku/screens/crud.dart';
 import 'package:karirku/screens/joblist_screen.dart';
 import 'package:karirku/screens/login.dart';
 import 'package:karirku/screens/news_screen.dart';
+import 'package:karirku/screens/routes/DatasScreen/customer_screen.dart';
 import 'package:karirku/screens/routes/DatasScreen/datas_screen.dart';
 import 'package:karirku/screens/routes/SecondScreen/second_screen.dart';
 import 'package:karirku/screens/community_screen.dart';
@@ -146,7 +147,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => DatasScreen(),
+                    builder: (context) => CustomerServiceScreen(),
                   ),
                 );
               },
