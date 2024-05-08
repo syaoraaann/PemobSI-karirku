@@ -6,7 +6,6 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:karirku/components/bottom_up_transition.dart';
 import 'package:karirku/dto/datascustomer.dart';
 import 'package:karirku/endpoints/endpoints.dart';
-import 'package:karirku/screens/routes/FormScreen/editscreen.dart';
 import 'package:karirku/screens/routes/FormScreen/editscreencust.dart';
 import 'package:karirku/screens/routes/FormScreen/form_screen.dart';
 import 'package:karirku/services/data_service.dart';

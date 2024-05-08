@@ -6,8 +6,7 @@ import 'package:karirku/components/bottom_up_transition.dart';
 import 'package:karirku/dto/datas.dart';
 import 'package:karirku/endpoints/endpoints.dart';
 import 'package:karirku/screens/routes/FormScreen/editscreen.dart';
-import 'package:karirku/screens/routes/FormScreen/formScreen.dart';
-import 'package:karirku/screens/routes/FormScreen/form_screen.dart';
+import 'package:karirku/screens/routes/FormScreen/formscreen.dart';
 import 'package:karirku/services/data_service.dart';
 
 class DatasScreen extends StatefulWidget {

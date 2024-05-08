@@ -1,4 +1,4 @@
-// ignore_for_file: use_super_parameters, library_private_types_in_public_api, prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously, annotate_overrides
+// ignore_for_file: use_super_parameters, library_private_types_in_public_api, prefer_const_constructors, prefer_const_literals_to_create_immutables, use_build_context_synchronously, annotate_overrides, prefer_final_fields, unused_field
 
 import 'dart:io';
 import 'package:flutter/material.dart';
@@ -6,9 +6,6 @@ import 'package:image_picker/image_picker.dart';
 import 'package:karirku/dto/datascustomer.dart';
 import 'package:karirku/screens/routes/DatasScreen/customer_screen.dart';
 import 'package:karirku/services/data_service.dart';
-import 'package:karirku/dto/datascustomer.dart';
-import 'package:karirku/endpoints/endpoints.dart';
-import 'package:image_picker/image_picker.dart';
 
 class CustomerEdit extends StatefulWidget {
   final CustomerService dataEdit;
